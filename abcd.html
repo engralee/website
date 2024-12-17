@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download as PDF</title>
+    <!-- Include jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h1>My Webpage</h1>
+    <p>This content will be downloaded as a PDF file.</p>
+
+    <!-- Button to download the content as PDF -->
+    <button id="download-btn">Download as PDF</button>
+
+    <script>
+        // Event listener for the download button
+        document.getElementById('download-btn').addEventListener('click', function () {
+            // Get the content from the page
+            const content = document.body.innerHTML;
+
+            // Use jsPDF to create a PDF
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+
+            // Add the content to the PDF
+            pdf.text(content, 10, 10);
+
+            // Save the PDF
+            pdf.save('download.pdf');
+        });
+    </script>
+</body>
+
+</html>
